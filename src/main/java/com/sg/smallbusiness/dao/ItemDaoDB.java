@@ -68,7 +68,12 @@ public class ItemDaoDB implements ItemDao {
 
     @Override
     public void deleteItemById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String DELETE_Receiving = "DELETE From receiving WHERE itemId = ?;";
+        jdbc.update(DELETE_Receiving, id);
+        
+        String DELETE_ITEM = "DELETE FROM Item WHERE itemId = ?;";
+        jdbc.update(DELETE_ITEM, id);
+        
     }
 
     @Override

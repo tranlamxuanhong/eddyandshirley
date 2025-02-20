@@ -13,23 +13,38 @@
   <body>
     <header class="jumbotron">
       <h1>small business</h1>
-
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" href="homepage">Homepage</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Receiving">Receiving</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Transaction</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Customer</a>
+        </li>
+      </ul>
     </header>
     <div class="container border">
         <div class="row border">
             <div class="col-sm-2 border p-3">
-              <p>Receiving</p>
+              <p>Create New Receiving</p>
               <a href="../Inventory">Create New Item</a>
 
             </div>
             <div class="col-sm-10 border p-3">
               <div class="row border p-3 m-2">
 
+
                 <!-- Create New Receiving -->
+
                 <form action="addReceiving" method="POST" >
                   <div class="form-group row">
                     <label class="col-7 col-form-label">Choose Item: </label>
-                    <select class="form-control col-5">
+                    <select name="itemName" class="form-control col-5">
                       <option th:each="item : ${allItem}" th:value="${item.itemId}" th:text="${item.itemName}" ></option>
                     </select>
                   </div>
@@ -37,29 +52,33 @@
                     <label for="quantity" class="col-7 col-form-label">Quantity:</label>
                     <input type="text" name="quantity" id="quantity" class="col-5 form-control"></input>
                   </div>
+
                   <div>
                     <input type="submit" value="Submit" class="btn btn-primary">
                   </div>
                 </form>
+
               </div>
 
               <!-- List down all new Receiving -->
               <div class="row border p-1 m-2">
+
                 <table class="table table-striped">
                   <tr>
                     <th>Date</th>
-                    <th>Title</th>
-                    <th>Price</th>
+                    <th>Item Name</th>
                     <th>Quantity</th>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <th>Edit</th>
+                    <th>Delete</th>
                   </tr>
 
+                  <tr th:each="receiving : ${allReceiving}">
+                    <td th:text="${receiving.receivingDate}"></td>
+                    <td th:text="${receiving.itemName}"></td>
+                    <td th:text="${receiving.quantity}"></td>
+                  </tr>
                 </table>
+
               </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: start;
   min-height: 65vh;
 }
 
@@ -13,8 +13,8 @@
 }
 
 #menu > div {
-  border: 3px solid blue;
   text-align: center;
+  margin: 5px 5px 5px 5px;
 
 }
 

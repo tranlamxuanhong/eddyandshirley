@@ -55,6 +55,12 @@ public class ItemController {
         
         return "Inventory";
     }
+    @GetMapping("deleteItem")
+    public String deleteItem(HttpServletRequest request){
+        int id = Integer.parseInt(request.getParameter("id"));
+        itemDao.deleteItemById(id);
+        return "redirect:Inventory";
+    }
     
     
     @PostMapping("addItem")
@@ -67,7 +73,6 @@ public class ItemController {
         //copy file image in images folder
         Files.write(path, file.getBytes());
         
-        
         Item item = new Item();
         item.setItemName(itemName);
         item.setPrice(Integer.parseInt(price));
@@ -79,10 +84,4 @@ public class ItemController {
         
         return "redirect:/Inventory";
     }
-    
-    
-    
-    
-
-    
 }

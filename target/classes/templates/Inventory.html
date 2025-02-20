@@ -32,11 +32,13 @@
     <div class="container border">
         <div class="row border">
             <div class="col-sm-2 border p-3">
-              <a href="Receiving">Receiving</a>
+              <a href="Receiving"> Create New Receiving</a>
               <p>Create New Item</p>
-
             </div>
             <div class="col-sm-10 border p-3">
+              <div>
+                <p class="">Create New Item:</p>
+              </div>
               <div class="row border p-3 m-2">
                 <form th:action="addItem" method="POST" enctype="multipart/form-data">
 
@@ -67,12 +69,17 @@
                     <th>Title</th>
                     <th>Price</th>
                     <th>Upload Image</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+
                   </tr>
                   <tr th:each="item : ${Inventory}">
                     <td th:text="${item.createdDate}"></td>
                     <td th:text="${item.itemName}"></td>
                     <td th:text="${item.price}"></td>
                     <td th:text="${item.imageName}"></td>
+                    <td>Edit</td>
+                    <td><a href="#" th:href="@{/deleteItem(id=${item.itemId})}">Delete</a></td>
                   </tr>
                 </table>
               </div>

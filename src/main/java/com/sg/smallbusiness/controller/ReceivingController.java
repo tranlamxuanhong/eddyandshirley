@@ -8,6 +8,7 @@ package com.sg.smallbusiness.controller;
 import com.sg.smallbusiness.dao.ItemDao;
 import com.sg.smallbusiness.dao.ReceivingDao;
 import com.sg.smallbusiness.models.Item;
+import com.sg.smallbusiness.models.Receiving;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +29,16 @@ public class ReceivingController {
     
     @Autowired
     ItemDao itemDaoDB;
+   
     
     @GetMapping("Receiving")
-    public String displayAllItems(Model model){
+    public String displayItemsInDropDownList(Model model){
+        
         List<Item> allItem = itemDaoDB.getAllItem();
         model.addAttribute("allItem", allItem);
+        
+        List<Receiving> allReceiving = ReceivingDaoDB.GetAllReceiving();
+        model.addAttribute("allReceiving", allReceiving);
         
         return "Receiving";
     }
@@ -40,7 +46,16 @@ public class ReceivingController {
     
     @PostMapping("addReceiving")
     public String addReceiving(HttpServletRequest request) {
+        int itemValue = Integer.parseInt(request.getParameter("itemName"));
+        int receivingQuantity = Integer.parseInt(request.getParameter("quantity"));
         
+        Receiving receiving = new Receiving();
+        receiving.setItemId(itemValue);
+        
+        receiving.setQuantity(receivingQuantity);
+        
+        
+        ReceivingDaoDB.addReceiving(receiving);
         
         
         return "redirect:/Receiving";

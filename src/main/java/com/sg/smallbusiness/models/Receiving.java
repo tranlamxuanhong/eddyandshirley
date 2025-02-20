@@ -19,6 +19,9 @@ public class Receiving {
     private int receivingId;
     private Date receivingDate;
     private int quantity;
+    private int itemId;
+    private String itemName;
+    
 
     public int getReceivingId() {
         return receivingId;
@@ -32,6 +35,16 @@ public class Receiving {
         return quantity;
     }
 
+    public int getItemId() {
+        return itemId;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    
+
     public void setReceivingId(int receivingId) {
         this.receivingId = receivingId;
     }
@@ -44,12 +57,22 @@ public class Receiving {
         this.quantity = quantity;
     }
 
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
     @Override
     public int hashCode() {
         int hash = 5;
         hash = 97 * hash + this.receivingId;
         hash = 97 * hash + Objects.hashCode(this.receivingDate);
         hash = 97 * hash + this.quantity;
+        hash = 97 * hash + this.itemId;
+        hash = 97 * hash + Objects.hashCode(this.itemName);
         return hash;
     }
 
@@ -71,11 +94,35 @@ public class Receiving {
         if (this.quantity != other.quantity) {
             return false;
         }
+        if (this.itemId != other.itemId) {
+            return false;
+        }
+        if (!Objects.equals(this.itemName, other.itemName)) {
+            return false;
+        }
         if (!Objects.equals(this.receivingDate, other.receivingDate)) {
             return false;
         }
         return true;
     }
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+
+    
+    
+    
+    
+
     
     
     
