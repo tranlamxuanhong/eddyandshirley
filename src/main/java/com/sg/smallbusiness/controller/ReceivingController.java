@@ -56,7 +56,7 @@ public class ReceivingController {
         
         
         ReceivingDaoDB.addReceiving(receiving);
-        
+        itemDaoDB.updateTotalQuantity(receivingQuantity, itemValue);
         
         return "redirect:/Receiving";
         

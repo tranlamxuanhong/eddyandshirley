@@ -1,11 +1,14 @@
+com/sg/smallbusiness/models/File.class
 com/sg/smallbusiness/models/Item.class
 com/sg/smallbusiness/dao/TransactionDao.class
+com/sg/smallbusiness/controller/FileController.class
 com/sg/smallbusiness/dao/ItemDaoDB$itemMapper.class
 com/sg/smallbusiness/dao/CustomerDaoDB$CustomerMapper.class
 com/sg/smallbusiness/dao/TransactionDaoDB.class
 com/sg/smallbusiness/controller/ReceivingController.class
 com/sg/smallbusiness/controller/ItemController.class
 com/sg/smallbusiness/dao/CustomerDaoDB.class
+com/sg/smallbusiness/dao/FileDaoDB.class
 com/sg/smallbusiness/dao/ItemDaoDB.class
 com/sg/smallbusiness/dao/ReceivingDaoDB$receivingMapper.class
 com/sg/smallbusiness/SmallbusinessApplication.class
@@ -14,6 +17,8 @@ com/sg/smallbusiness/models/Transaction.class
 com/sg/smallbusiness/dao/ReceivingDaoDB.class
 com/sg/smallbusiness/controller/TransactionController.class
 com/sg/smallbusiness/models/Receiving.class
+com/sg/smallbusiness/dao/FileDao.class
+com/sg/smallbusiness/dao/FileDaoDB$fileMapper.class
 com/sg/smallbusiness/dao/ItemDao.class
 com/sg/smallbusiness/dao/ReceivingDao.class
 com/sg/smallbusiness/dao/CustomerDao.class

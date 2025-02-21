@@ -22,7 +22,11 @@ public interface ItemDao {
     
     void deleteItemById(int id);
     
-    void getItemById(int id);
+    Item getItemById(int id);
     
     List<Item> getItemsCreatedToday();
+    
+    void updateTotalQuantity(int quantity, int id);
+    
+    
 }

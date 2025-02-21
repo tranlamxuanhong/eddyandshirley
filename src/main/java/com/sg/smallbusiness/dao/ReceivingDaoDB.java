@@ -56,6 +56,7 @@ public class ReceivingDaoDB implements ReceivingDao {
         
         receiving.setReceivingId(receivingId);
         
+        
         return receiving;
         
     }

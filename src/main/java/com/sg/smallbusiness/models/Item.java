@@ -22,6 +22,7 @@ public class Item {
     private int price;
     private Date createdDate;
     private String imageName;
+    private int totalQuantity;
     
 
     public int getItemId() {
@@ -44,6 +45,12 @@ public class Item {
         return imageName;
     }
 
+    public int getTotalQuantity() {
+        return totalQuantity;
+    }
+    
+    
+
     
     public void setItemId(int itemId) {
         this.itemId = itemId;
@@ -65,14 +72,19 @@ public class Item {
         this.imageName = imageName;
     }
 
-    
+    public void setTotalQuantity(int totalQuantity) {
+        this.totalQuantity = totalQuantity;
+    }
+
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 17 * hash + this.itemId;
-        hash = 17 * hash + Objects.hashCode(this.itemName);
-        hash = 17 * hash + this.price;
-        hash = 17 * hash + Objects.hashCode(this.createdDate);
+        hash = 97 * hash + this.itemId;
+        hash = 97 * hash + Objects.hashCode(this.itemName);
+        hash = 97 * hash + this.price;
+        hash = 97 * hash + Objects.hashCode(this.createdDate);
+        hash = 97 * hash + Objects.hashCode(this.imageName);
+        hash = 97 * hash + this.totalQuantity;
         return hash;
     }
 
@@ -94,7 +106,13 @@ public class Item {
         if (this.price != other.price) {
             return false;
         }
+        if (this.totalQuantity != other.totalQuantity) {
+            return false;
+        }
         if (!Objects.equals(this.itemName, other.itemName)) {
+            return false;
+        }
+        if (!Objects.equals(this.imageName, other.imageName)) {
             return false;
         }
         if (!Objects.equals(this.createdDate, other.createdDate)) {
@@ -102,7 +120,11 @@ public class Item {
         }
         return true;
     }
+    
+    
 
+    
+    
    
     
     
