@@ -121,9 +121,8 @@ public class ItemDaoDB implements ItemDao {
         
         jdbc.update(update_quantity, newItemQuantity, id);        
     }
-
     
-
+   
     public static final class itemMapper implements RowMapper<Item> {
         @Override
         public Item mapRow(ResultSet rs, int index)  throws SQLException {
@@ -131,7 +130,7 @@ public class ItemDaoDB implements ItemDao {
             Item item = new Item();
             item.setItemId(rs.getInt("itemId"));
             item.setItemName(rs.getString("itemName"));
-            item.setPrice(rs.getInt("price"));
+            item.setPrice(rs.getFloat("price"));
             item.setCreatedDate(rs.getDate("createdDate"));
             item.setImageName(rs.getString("imageName"));
             item.setTotalQuantity(rs.getInt("totalQuantity"));

@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 
 import java.util.List;
@@ -37,6 +38,9 @@ public class ItemController {
     ItemDao itemDao;
     
     public static String Upload_Directory = System.getProperty("user.dir") + "/src/main/resources/static/images";
+    
+    
+    List<Item> newItemList = new ArrayList<>();
     
     
     @GetMapping("homepage")
@@ -66,7 +70,7 @@ public class ItemController {
     @PostMapping("addItem")
     public String addItem(HttpServletRequest request,  MultipartFile file) throws IOException {
         String itemName = request.getParameter("title");
-        String price = request.getParameter("price");
+        float price = Float.parseFloat(request.getParameter("price"));
         
         Path path = Paths.get(Upload_Directory, file.getOriginalFilename());
         
@@ -75,13 +79,45 @@ public class ItemController {
         
         Item item = new Item();
         item.setItemName(itemName);
-        item.setPrice(Integer.parseInt(price));
+        item.setPrice(price);
         item.setImageName(file.getOriginalFilename());
-        
-        
+     
         itemDao.addItem(item);
-        
-        
+       
         return "redirect:/Inventory";
+      
+    }
+    
+    
+    @PostMapping("searchItem")
+    public String searchItem(HttpServletRequest request) throws IOException{
+        newItemList.clear();
+        String searchWord = request.getParameter("search");
+        
+         List<Item> allItems = itemDao.getAllItem();
+         
+      
+         for(int i=0; i < allItems.size(); i++) {
+             if (allItems.get(i).getItemName().toLowerCase().contains(searchWord.toLowerCase())) {
+                 //call itemList
+                 Item searchItem = itemDao.getItemById(allItems.get(i).getItemId());
+                 
+                 newItemList.add(searchItem);
+                 //model.addAttribute("newItemList", newItemList);
+                 
+             }
+         }    
+         
+        return "redirect:/searchItem";
+    }
+    
+    
+    @GetMapping("searchItem")
+    public String displayNewSearchItems(Model model) {
+        
+        
+        model.addAttribute("newItemList", newItemList);
+        
+        return "searchItem";
     }
 }

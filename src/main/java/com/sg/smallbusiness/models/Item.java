@@ -9,7 +9,6 @@ package com.sg.smallbusiness.models;
 import java.util.Date;
 import java.util.Objects;
 
-
 /**
  *
  * @author tranlamxuanhong
@@ -19,7 +18,7 @@ public class Item {
     
     private int itemId;
     private String itemName;
-    private int price;
+    private Float price;
     private Date createdDate;
     private String imageName;
     private int totalQuantity;
@@ -33,10 +32,11 @@ public class Item {
         return itemName;
     }
 
-    public int getPrice() {
+    public Float getPrice() {
         return price;
     }
 
+   
     public Date getCreatedDate() {
         return createdDate;
     }
@@ -60,9 +60,10 @@ public class Item {
         this.itemName = itemName;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
+
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
@@ -78,10 +79,10 @@ public class Item {
 
     @Override
     public int hashCode() {
-        int hash = 5;
+        int hash = 7;
         hash = 97 * hash + this.itemId;
         hash = 97 * hash + Objects.hashCode(this.itemName);
-        hash = 97 * hash + this.price;
+        hash = 97 * hash + Objects.hashCode(this.price);
         hash = 97 * hash + Objects.hashCode(this.createdDate);
         hash = 97 * hash + Objects.hashCode(this.imageName);
         hash = 97 * hash + this.totalQuantity;
@@ -103,9 +104,6 @@ public class Item {
         if (this.itemId != other.itemId) {
             return false;
         }
-        if (this.price != other.price) {
-            return false;
-        }
         if (this.totalQuantity != other.totalQuantity) {
             return false;
         }
@@ -115,18 +113,14 @@ public class Item {
         if (!Objects.equals(this.imageName, other.imageName)) {
             return false;
         }
+        if (!Objects.equals(this.price, other.price)) {
+            return false;
+        }
         if (!Objects.equals(this.createdDate, other.createdDate)) {
             return false;
         }
         return true;
     }
-    
-    
 
-    
-    
-   
-    
-    
-        
+ 
 }

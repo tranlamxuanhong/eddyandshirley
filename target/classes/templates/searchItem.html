@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
@@ -35,13 +34,15 @@
             </ul>
           </div>
           <div class="col-sm-3">
-            <form th:href="@{/searchItem}" action="searchItem" method="POST">
+
+            <form th:action="searchItem" method="POST">
               <div class="input-group ">
                     <input type="text" class="form-control rounded" placeholder="Search"
-                           id="search" name="search">
-                    <input type="Submit" value="Search" class="btn btn-outline-primary">
+                           name="search" id="search">
+                    <input type="submit" value ="Search" class="btn btn-outline-primary">
               </div>
             </form>
+          
           </div>
         </div>
 
@@ -50,7 +51,7 @@
     <div class="container">
           <!-- All item are listing here -->
          <div id="menu">
-              <div th:each = "item : ${allItems}" >
+              <div th:each = "item : ${newItemList}" >
                 <img th:src="@{'/images/' + ${item.imageName} }" alt="broken link" width="200" height="200">
                 <div th:text = "${item.itemName}"></div>
                 <div th:text = "${item.Price}"></div>

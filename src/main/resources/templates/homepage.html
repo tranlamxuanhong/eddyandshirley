@@ -17,26 +17,39 @@
 
     <header class="jumbotron">
       <h1>small business</h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9">
+              <!-- Navigation Menu -->
+            <ul class="nav justify-content-center">
+              <li class="nav-item">
+                <a class="nav-link" href="homepage">Homepage</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Receiving">Receiving</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="">Transaction</a>
+              </li>
 
-      <!-- Navigation Menu -->
-      <ul class="nav justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link" href="homepage">Homepage</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="Receiving">Receiving</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="">Transaction</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="">Customer</a>
-        </li>
-      </ul>
+            </ul>
+          </div>
+          <div class="col-sm-3">
+            <form th:href="@{/searchItem}" action="searchItem" method="POST">
+              <div class="input-group ">
+                    <input type="text" class="form-control rounded" placeholder="Search"
+                           id="search" name="search">
+                    <input type="Submit" value="Search" class="btn btn-outline-primary">
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
     </header>
-    <div class="container" >
+    <div class="container">
           <!-- All item are listing here -->
-          <div id="menu">
+         <div id="menu">
               <div th:each = "item : ${allItems}" >
                 <img th:src="@{'/images/' + ${item.imageName} }" alt="broken link" width="200" height="200">
                 <div th:text = "${item.itemName}"></div>
@@ -44,6 +57,7 @@
               </div>
           </div>
           <div class="push"></div>
+
     </div>
     <footer>
       <p class="text-center">� Copyright 2021 - Small Business.  All rights reserved.</p>
